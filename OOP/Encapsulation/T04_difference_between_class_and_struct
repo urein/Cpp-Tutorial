@@ -1,0 +1,32 @@
+#include<iostream>
+using namespace std;
+
+/*
+They have different default access specifiers.
+- struct: default as public
+- class: default as private
+*/
+
+
+class C1
+{
+	int a;  // as private
+};
+
+
+struct C2 
+{
+	int a; // as public
+};
+
+
+int main()
+{
+	C1 c1;
+	//c1.a = 10;  // error
+	
+	C2 c2;
+	c2.a = 10;  // ok
+	
+	return 0;
+}
