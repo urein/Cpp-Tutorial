@@ -1,0 +1,140 @@
+// .h: keep declaration
+
+// point.h
+
+#pragma once
+#include<iostream>
+using namespace std;
+
+class Point
+{
+private:
+	double m_X;
+	double m_Y;
+
+public:
+	void set_X(double x);
+	double get_X();
+	void set_Y(double y);
+	double get_Y();
+};
+
+
+
+// circle.h
+
+#pragma once
+#include<iostream>
+#include "point.h"  // *
+using namespace std;
+
+class Circle
+{
+private:
+	double m_R;
+	Point m_Center;  // 在一个类中可以让另一个类作为本类中的成员
+
+public:
+	void set_R(double r);
+	double get_R();
+	void set_Center(Point center);
+	Point get_Center();
+};
+
+
+
+
+// .cpp: keep specific realization
+
+// point.cpp
+
+#include "point.h"
+
+void Point::set_X(double x)
+{
+	m_X = x;
+}
+double Point::get_X()
+{
+	return m_X;
+}
+void Point::set_Y(double y)
+{
+	m_Y = y;
+}
+double Point::get_Y()
+{
+	return m_Y;
+}
+
+
+
+// circle.cpp
+
+#include "circle.h"
+
+void Circle::set_R(double r)
+{
+	m_R = r;
+}
+double Circle::get_R()
+{
+	return m_R;
+}
+void Circle::set_Center(Point center)
+{
+	m_Center = center;
+}
+Point Circle::get_Center()
+{
+	return m_Center;
+}
+
+
+
+// source.cpp
+
+#include<iostream>
+using namespace std;
+#include "circle.h"
+#include "point.h"
+
+
+// make judgement of the relationship
+void isInCircle(Circle& c, Point& p)
+{
+	double distance = (p.get_X() - c.get_Center().get_X()) * (p.get_X() - c.get_Center().get_X()) +
+		                (p.get_Y() - c.get_Center().get_Y()) * (p.get_Y() - c.get_Center().get_Y());
+	double rdistance = c.get_R() * c.get_R();
+	if (distance == rdistance)
+	{
+		cout << "point is on the circle." << endl;
+	}
+	else if (distance > rdistance)
+	{
+		cout << "point is outside the circle." << endl;
+	}
+	else
+	{
+		cout << "point is inside the circle." << endl;
+	}
+}
+
+
+int main()
+{
+	Circle c1;
+	c1.set_R(10);
+
+	Point center;
+	center.set_X(10);
+	center.set_Y(0);
+	c1.set_Center(center);
+
+	Point p;
+	p.set_X(10);
+	p.set_Y(11);
+
+	isInCircle(c1, p);
+	return 0;
+}
