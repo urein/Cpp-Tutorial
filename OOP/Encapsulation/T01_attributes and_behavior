@@ -1,0 +1,26 @@
+#include<iostream>
+using namespace std;
+
+
+const double PI = 3.14;
+
+class Circle 
+{
+public:
+	double m_r;
+  
+	double get_perimeter()
+	{
+		return 2 * PI * m_r;
+	}
+};
+
+
+int main()
+{
+	Circle c1;
+	c1.m_r = 10;
+	cout << "Perimeter of c1: " << c1.get_perimeter() << endl;
+
+	return 0;
+}
