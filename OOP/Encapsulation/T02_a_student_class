@@ -1,0 +1,38 @@
+#include<iostream>
+using namespace std;
+
+
+class Student
+{
+public:
+	string name;
+	int id;
+	
+	void show_info()
+	{
+		cout << "name: " << name << endl; 
+		cout << "id: " << id << endl;
+	}
+
+	void set_name(string new_name)
+	{
+		name = new_name;
+	}
+
+};
+
+
+int main()
+{
+	Student s1;
+	s1.set_name("Tom");
+	s1.id = 1;
+
+	Student s2;
+	s2.set_name("Amy");
+	s2.id = 2;
+	
+	s1.show_info();
+	s2.show_info();
+	return 0;
+}
