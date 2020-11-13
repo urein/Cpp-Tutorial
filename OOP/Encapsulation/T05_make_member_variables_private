@@ -1,0 +1,63 @@
+#include<iostream>
+using namespace std;
+
+/*
+advantages:
+1. self-controlled read and write permission
+2. validity of the data to be written can be detected, e.g. age cannot be negative
+*/
+
+
+class Person
+{
+public:
+	void set_name(string name) 
+	{
+		m_name = name;
+	}
+	
+	string get_name()
+	{
+		return m_name;
+	}
+
+	void set_age(int age)
+	{
+		if (age < 0 || age>150)
+		{
+			cout << "invalid age" << endl;
+			return;
+		}
+		m_age = age;
+	}
+
+	int get_age()
+	{
+		return m_age;
+	}
+
+	void set_lover(string lover)
+	{
+		m_lover = lover;
+	}
+
+private:
+	string m_name;  // read and write
+	int m_age = 0;  // read only
+	string m_lover;  // write only
+};
+
+
+
+int main()
+{
+	Person p1;
+	p1.set_name("Tom");
+	cout << "name pf p1: " << p1.get_name() << endl;
+
+	p1.set_age(180);
+	cout << "age pf p1: " << p1.get_age() << endl;
+
+
+	return 0;
+}
