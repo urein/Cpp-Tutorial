@@ -1,0 +1,107 @@
+#include<iostream>
+using namespace std;
+
+
+class Cube
+{
+private:
+	double m_l;
+	double m_w;
+	double m_h;
+
+public:
+	void set_l(double l)
+	{
+		m_l = l;
+	}
+	
+	void set_w(double w)
+	{
+		m_w = w;
+	}
+
+	void set_h(double h)
+	{
+		m_h = h;
+	}
+	
+	double get_l()
+	{
+		return m_l;
+	}
+	
+	double get_w()
+	{
+		return m_w;
+	}
+	
+	double get_h()
+	{
+		return m_h;
+	}
+
+	double calculate_S()
+	{
+		return 2 * (m_l * m_w + m_l * m_h + m_w * m_h);
+	}
+
+	double calculate_V()
+	{
+		return m_l * m_w * m_h;
+	}
+	
+	// judge by member function
+	bool isSame2(Cube& other)
+	{
+		if (m_l == other.get_l() && m_w == other.get_w() && m_h == other.get_h())
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+};
+
+
+// judge by global function
+bool isSame(Cube& c1, Cube& c2)
+{
+	if (c1.get_l() == c2.get_l() && c1.get_w() == c2.get_w() && c1.get_h() == c2.get_h())
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+
+int main()
+{
+	Cube c1;
+	c1.set_l(10);
+	c1.set_w(10);
+	c1.set_h(10);
+	cout << "S of c1: " << c1.calculate_S() << endl;
+	cout << "V of c1: " << c1.calculate_V() << endl;
+
+	Cube c2;
+	c2.set_l(10);
+	c2.set_w(10);
+	c2.set_h(10);
+	cout << "S of c2: " << c2.calculate_S() << endl;
+	cout << "V of c2: " << c2.calculate_V() << endl;
+
+	// judge by global function
+	bool ret = isSame(c1, c2);
+	cout << "is c1 same as c2:  " << (ret != 0 ? "true" : "false") << endl;
+	
+	// judge by member function
+	bool ret2 = c1.isSame2(c2);
+	cout << "is c1 same as c2:  " << (ret2 != 0 ? "true" : "false") << endl;
+
+	return 0;
+}
