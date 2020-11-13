@@ -1,0 +1,31 @@
+#include<iostream>
+using namespace std;
+
+
+class Person
+{
+public:
+	// constructor
+	Person()
+	{
+		cout << "call constructor of class Person." << endl;
+	}
+	// destructor
+	~Person()
+	{
+		cout << "call destructor of class Person." << endl;
+	}
+};
+
+void test01()
+{
+	// object p is a local variable, allocated on the stack area 
+  // after test01 runs it will be released
+	Person p;  // constructor is invoked automatically, before release destructor will also be invoked automatically
+}
+
+int main()
+{
+	test01();
+	return 0;
+}
