@@ -1,0 +1,42 @@
+#include<iostream>
+using namespace std;
+
+/*
+attributes and behaviours can be put in different access sprcifiers. 
+
+1. public     accessible inside the class    accessible outside the class
+2. protected  accessible inside the class    not accessible outside the class   accessible by child class
+3. private    accessible inside the class    not accessible outside the class   not accessible by child class
+*/
+
+
+class Person
+{
+public:
+	string name;
+
+protected:
+	string car;
+
+private:
+	int password;
+
+public:
+	void func()
+	{
+		// accessible inside the class  
+		name = 'Tom';
+		car = 'BMW';
+		password = 123456;
+	}
+};
+
+int main()
+{
+	Person p1;
+	p1.name = "Amy";
+	//p1.car = "Toyota";  // error，protected specifier，not accessible outside the class
+	//p1.password = 65432;  // error，private specifier，not accessible outside the class
+	
+	return 0;
+}
